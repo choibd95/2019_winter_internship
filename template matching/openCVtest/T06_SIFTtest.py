@@ -1,0 +1,15 @@
+import numpy as np
+import cv2 as cv
+from matplotlib import pyplot as plt
+img = cv.imread('T06/twitch_logo.png',0)
+# Initiate ORB detector
+orb = cv.ORB_create()
+# find the keypoints with ORB
+kp = orb.detect(img,None)
+# compute the descriptors with ORB
+kp, des = orb.compute(img, kp)
+# draw only keypoints location,not size and orientation
+img2 = cv.drawKeypoints(img, kp, None, color=(0,255,0), flags=0)
+
+cv.imshow("img2", img2)
+cv.waitKey(0)
